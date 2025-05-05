@@ -14,14 +14,11 @@ export function useFileUpload(options: UseFileUploadOptions = {}) {
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Store progresses for the FileUploader component
   const [progresses, setProgresses] = useState<Record<string, number>>({});
 
-  // Track mounted state to prevent state updates after unmount
+
   const isMounted = useRef(true);
 
-  // IMPORTANT: Reset isMounted to true whenever the hook is initialized
-  // This ensures it's properly set after any remounting
   useEffect(() => {
     console.log('Setting isMounted to true on hook initialization');
     isMounted.current = true;
